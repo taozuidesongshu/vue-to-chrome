@@ -4,7 +4,7 @@
         slot="header"
         class="clearfix"
     >
-      <span>卡片名称</span>
+      <span>卡片名称555</span>
       <el-button
           style="float: right; padding: 3px 0"
           type="text"
