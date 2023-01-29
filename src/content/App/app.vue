@@ -5,33 +5,33 @@
           class="card__header"
       >
         <span>{{ name }}    {{ time }}</span>
-<!--        <el-button-->
-<!--            style="float: right; padding: 3px 0"-->
-<!--            type="text"-->
-<!--            @click="go()"-->
-<!--        >操作按钮-->
-<!--        </el-button>-->
+        <!--        <el-button-->
+        <!--            style="float: right; padding: 3px 0"-->
+        <!--            type="text"-->
+        <!--            @click="go()"-->
+        <!--        >操作按钮-->
+        <!--        </el-button>-->
         <a :href="imgUrl" target="_blank">主要链接</a>
       </div>
-<!--      <ul>-->
-<!--        <li v-for="(o,index) in listData" :key="index" class="box-li">-->
-<!--          <div style="width: 10vw">-->
-<!--            &lt;!&ndash;            <el-image&ndash;&gt;-->
-<!--            &lt;!&ndash;                style="width: 100px; height: 100px"&ndash;&gt;-->
-<!--            &lt;!&ndash;                :src="o.al.picUrl"&ndash;&gt;-->
-<!--            &lt;!&ndash;                :fit="'fill'"&ndash;&gt;-->
-<!--            &lt;!&ndash;            ></el-image>&ndash;&gt;-->
-<!--          </div>-->
-<!--          <div style="flex: 1;text-align: left;">-->
-<!--            {{ index + 1 }}： {{ o }}-->
-<!--          </div>-->
-<!--        </li>-->
-<!--      </ul>-->
-                  <el-image
-                      style="width: 500px;"
-                      :src="imgUrl"
-                      :fit="'fill'"
-                  ></el-image>
+      <!--      <ul>-->
+      <!--        <li v-for="(o,index) in listData" :key="index" class="box-li">-->
+      <!--          <div style="width: 10vw">-->
+      <!--            &lt;!&ndash;            <el-image&ndash;&gt;-->
+      <!--            &lt;!&ndash;                style="width: 100px; height: 100px"&ndash;&gt;-->
+      <!--            &lt;!&ndash;                :src="o.al.picUrl"&ndash;&gt;-->
+      <!--            &lt;!&ndash;                :fit="'fill'"&ndash;&gt;-->
+      <!--            &lt;!&ndash;            ></el-image>&ndash;&gt;-->
+      <!--          </div>-->
+      <!--          <div style="flex: 1;text-align: left;">-->
+      <!--            {{ index + 1 }}： {{ o }}-->
+      <!--          </div>-->
+      <!--        </li>-->
+      <!--      </ul>-->
+      <el-image
+          style="width: 500px;"
+          :src="imgUrl"
+          :fit="'fill'"
+      ></el-image>
     </div>
     <div class="hiddenBottom" style="top: 400px;" @click="toLeft">
       <i :class="ico"></i>
@@ -53,7 +53,7 @@ export default {
       listData: [],
       right: '0',
       ico: 'el-icon-arrow-left',
-      imgUrl: '',
+      imgUrl: ''
     }
   },
   computed: {},
@@ -100,11 +100,13 @@ export default {
   background: #fcfcfc;
   z-index: 99;
 }
-.card__header{
+
+.card__header {
   box-sizing: border-box;
   padding: 18px 20px;
   border-bottom: 1px solid rgb(235, 238, 245);
 }
+
 .box-li {
   padding: 1rem 0;
   font-weight: 400;
@@ -113,7 +115,6 @@ export default {
   color: #515767;
   font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial !important;
 }
-
 
 
 .hiddenBottom {

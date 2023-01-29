@@ -38,3 +38,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 [1](https://www.jianshu.com/p/5464872fef93)
 [2](http://liujinkai.com/2022/03/12/chrome-extensions-manifest-v3/)
 [3](https://blog.csdn.net/ZK645968/article/details/126288400)
+
+## 谷歌官方例子
+[例子](https://github.com/GoogleChrome/chrome-extensions-samples)
+
+
+## 不启用sourceMap
+`devtool: "source-map"`
+[vue3开发](https://github.dev/choumai555/vue-chrome-extension-mv3)，注意webpack.config.ts第19行
+
+[使用Vue3+Element Plus开发Chrome插件](https://blog.csdn.net/yizhiliudaji/article/details/126388457)
