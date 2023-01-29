@@ -8,7 +8,8 @@
             "48": "assets/icon48.png",
             "128": "assets/icon128.png"
         },
-        "default_title": "Vue Popup"
+        "default_title": "Vue Popup",
+        "default_popup": "popups/index.html"
     },
     "icons": {
         "16": "assets/icon16.png",
@@ -26,12 +27,15 @@
                 "<all_urls>"
             ],
             "js": [
-                "content-scripts/main.ts"
+                "content-scripts/juejin/main.ts"
             ],
             "css": [
-                "content-scripts/main.css"
+                "content-scripts/juejin/main.css"
             ],
             "run_at": "document_start"
         }
-    ]
+    ],
+    "options_ui": {
+        "page": "./options/index.html"
+    }
 }

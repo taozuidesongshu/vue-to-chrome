@@ -4,6 +4,7 @@
     "scripts": {
         "dev": "vite build --mode developmemnt",
         "build": "vite build",
+        "build:watch": "nodemon --watch src --exec npm run build --ext \"ts,vue\"",
         "serve": "vite preview"
     },
     "dependencies": {

@@ -1,24 +1,13 @@
-import { createApp } from "vue";
+import {createApp} from "vue";
 import ElementPlus from "element-plus";
-import Popup from "./Popup.vue";
-import "element-plus/lib/theme-chalk/index.css";
+import Popup from "./App/Popup.vue";
+// import "element-plus/lib/theme-chalk/index.css";
+import cssString from "element-plus/lib/theme-chalk/index.css";
 
+const style = document.createElement('style');
+document.head.append(style);
+style.textContent = cssString;
 
-window.onload = async () => {
-    const el = document.querySelector('body');
-    if (el) {
-        el.insertAdjacentHTML(
-            'afterend',
-            '<div id="crx-app"></div>',
-        );
-        createApp(Popup).use(ElementPlus).mount('#crx-app');
-    }
-    // chrome.runtime.onMessage.addListener((message:object) => {
-    //     console.log(message)
-    //     if (message.toggleVisible) {
-    //         (vm as any).visible = !(vm as any).visible;
-    //     }
-    // });
-}
+createApp(Popup).use(ElementPlus).mount('#app');
 
 

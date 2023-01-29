@@ -1,10 +1,10 @@
 <template>
-    <div v-show="visible" class="ce-mask">
+    <div class="ce-mask">
         <div class="ce-popup">
             <div class="ce-popup-content">
                 Hello, Vite-Plugin-Chrome-Extension
             </div>
-            <div class="at-close-button" @click="visible=!visible">
+            <div class="at-close-button">
                 <i class="el-icon-close"></i>
             </div>
         </div>
@@ -19,15 +19,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.ce-mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,.6);
-    z-index: 99999;
-}
+/*.ce-mask {*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*    background-color: rgba(0,0,0,.6);*/
+/*    z-index: 99999;*/
+/*}*/
 .ce-popup {
     position: absolute;
     top: 20px;

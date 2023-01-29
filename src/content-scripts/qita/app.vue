@@ -1,14 +1,14 @@
 <template>
-    <div v-show="visible" class="ce-mask">
-        <div class="ce-popup">
-            <div class="ce-popup-content">
-                Hello, Vite-Plugin-Chrome-Extension
-            </div>
-            <div class="at-close-button" @click="visible=!visible">
-                <i class="el-icon-close"></i>
-            </div>
-        </div>
-    </div>
+<!--    <div v-show="visible" class="ce-mask">-->
+<!--        <div class="ce-popup">-->
+<!--            <div class="ce-popup-content">-->
+<!--                Hello, Vite-Plugin-Chrome-Extension-->
+<!--            </div>-->
+<!--            <div class="at-close-button" @click="visible=!visible">-->
+<!--                <i class="el-icon-close"></i>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 </template>
 
 <script>
