@@ -58,7 +58,7 @@ module.exports = {
 	productionSourceMap: false,
 	
 	configureWebpack: {
-		devtool: 'none', // 不启用sourceMap
+		devtool: 'inline-source-map', // 不启用sourceMap
 		entry: {
 			'content': path.resolve('src', 'content/index.js'),
 			'background': path.resolve('src', 'background/background.js')
