@@ -17,7 +17,7 @@ service.interceptors.request.use(
 		// 	// config.baseURL = process.env.VUE_APP_BASE_API
 		// 	config.baseURL = 'https://node-lwldp.run.goorm.io/'
 		// }
-		config.baseURL?config.baseURL:(config.baseURL="https://node-lwldp.run.goorm.io/")
+		config.baseURL?config.baseURL:(config.baseURL="https://node-lwldp.run.goorm.app")
 		// const urlInfo = JSON.parse(Cookies.get('urlInfo'))
 		// config.headers['Authorization'] = `Bearer ${urlInfo.token}`
 		// config.headers['systemCode'] = urlInfo.systemCode

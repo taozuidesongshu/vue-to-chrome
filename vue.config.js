@@ -9,22 +9,18 @@ const pagesObj = {};
 	pagesObj[name] = {
 		entry: `src/${name}/index.js`,
 		template: 'public/index.html',
-		filename: `${name}.html`
+		filename: `html/${name}.html`
 	}
 })
-const assets = ['assets', 'api'].map(v => {
+const assets = ['assets', 'api','utils'].map(v => {
 	return {
 		from: path.resolve(`src/${v}`),
 		to: path.resolve(`dist/${v}`)
 	}
 })
 // 生成manifest文件
-const manifest =
-	process.env.NODE_ENV === 'production' ? {
+const manifest = {
 		from: path.resolve('src/manifest.production.json'),
-		to: `${path.resolve('dist')}/manifest.json`
-	} : {
-		from: path.resolve('src/manifest.development.json'),
 		to: `${path.resolve('dist')}/manifest.json`
 	}
 
@@ -53,14 +49,17 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-	pages: pagesObj,
+	pages: {
+		"popup":{ entry: `src/popup/index.js`, template: 'src/popup/index.html', filename: `html/popup.html` },
+		"music":{ entry: `src/options/music/index.js`, template: 'src/options/juejin/index.html', filename: `html/music.html` },
+	},
 	// // 生产环境是否生成 sourceMap 文件
 	productionSourceMap: false,
 	
 	configureWebpack: {
 		devtool: 'inline-source-map', // 不启用sourceMap
 		entry: {
-			'content': path.resolve('src', 'content/index.js'),
+			'juejin': path.resolve('src', 'content/juejin/index.js'),
 			'background': path.resolve('src', 'background/background.js')
 		},
 		output: {

@@ -3,10 +3,10 @@
     "name": "vue开发",
     "description": "a chrome extension with vue-cli3",
     "version": "0.0.1",
-    "options_page": "options.html",
+    "options_page": "html/music.html",
     "action": {
         "default_icon": "assets/extension-icons/logo-32.png",
-        "default_popup": "popup.html"
+        "default_popup": "html/popup.html"
     },
     "background": {
         "service_worker":"js/background.js",
@@ -30,10 +30,10 @@
             "*://*.juejin.cn/*"
         ],
         "css": [
-            "css/content.css"
+            "css/juejin.css"
         ],
         "js": [
-            "js/content.js"
+            "js/juejin.js"
         ],
         "run_at": "document_end"
     }],

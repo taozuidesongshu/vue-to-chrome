@@ -5,18 +5,13 @@
         class="clearfix"
     >
       <span>卡片名称555</span>
-      <el-button
-          style="float: right; padding: 3px 0"
-          type="text"
-          @click="go()"
-      >操作按钮</el-button>
     </div>
     <div
-        v-for="o in 4"
-        :key="o"
+        v-for="o in listdata"
+        :key="o.key"
         class="text item"
     >
-      {{'列表内容 ' + o }}
+      <el-button type="text" @click="go(o)">{{'跳转 ' + o.name }}</el-button>
     </div>
   </el-card>
 </template>
@@ -32,7 +27,10 @@ export default {
   props: {},
   data() {
     return {
-      // newwindow:undefined
+      listdata:[{
+        name:"music",
+        key:"music"
+      }]
     }
   },
   computed: {},
@@ -44,10 +42,10 @@ export default {
   destroyed() {
   },
   methods: {
-    go(){
+    go(o){
       // let newwindow
       // window.open('../options.html', "_blank");
-      chrome.tabs.create({url: '../options.html'});
+      chrome.tabs.create({url: `../html/${o.key}.html`});
       return false
       // newwindow.recordedBlobs = blobs;
       // newwindow.url = "";
