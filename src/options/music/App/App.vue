@@ -18,7 +18,7 @@
           </el-button>
         </div>
       </div>
-      <ul>
+      <ul v-loading="loading">
         <li v-for="(o,index) in listData" :key="index" class="box-li">
           <div style="width: 10vw">
             <el-image
@@ -50,7 +50,8 @@ export default {
   data() {
     return {
       listData: [],
-      input: undefined
+      input: undefined,
+      loading: false
       // taglist:[
       //   {name:'歌曲',}
       // ]
@@ -66,23 +67,33 @@ export default {
   },
   methods: {
     search() {
+      this.listData=[]
+      this.loading=true
       const query = {
         'keywords': this.input
       }
       apiGetList(query).then(res => {
         this.listData = res.result.songs
+        this.loading=false
       })
     },
     getDownloadUrl(item) {
       apiDownloadUrl({ id: item.id }).then(res => {
         if(!res.data.url){
-          this.$message.error('为获取的下载链接')
+          this.$notify.error({
+            title: '错误',
+            message: '未获取到下载链接'
+          });
           return
         }
         this.$set(item, 'url', res.data.url)
       })
     },
     async download(item) {
+      this.$message({
+        message: `${item.name}下载中`,
+        type: 'success',
+      })
       const data = await fetch(item.url)
       const blob = await data.blob()
       const url = window.URL.createObjectURL(blob)
