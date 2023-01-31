@@ -1,17 +1,8 @@
 import Vue from "vue";
 import AppComponent from "./App/App.vue";
-
-Vue.component("app-component", AppComponent);
-import {
-  Card,
-  Button,
-  Image
-} from 'element-ui';
-
-Vue.use(Card);
-Vue.use(Button);
-Vue.use(Image);
-
+import ElementUI from 'element-ui'
+import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
+Vue.use(ElementUI, { zhLocale, size: 'mini' })
 new Vue({
   el: "#app",
   render: createElement => {

@@ -94,9 +94,10 @@ export default {
 <style rel="stylesheet/css" lang="css" scoped>
 .box {
   position: absolute;
-  top: 100px;
+  top: 130px;
+  bottom: 0;
   width: 500px;
-  height: 600px;
+  height: auto;
   background: #fcfcfc;
   z-index: 99;
 }

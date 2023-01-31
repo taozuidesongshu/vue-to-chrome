@@ -1,16 +1,22 @@
 <template>
   <div class="main_app">
+    <!--    <el-tag-->
+    <!--        v-for="(item,index) in taglist" :key="index"-->
+    <!--    >{{item.name}}</el-tag>-->
     <el-card class="box-card">
       <div
           slot="header"
           class="clearfix"
       >
-        <span>卡片名称</span>
-        <!--        <el-button-->
-        <!--            style="float: right; padding: 3px 0"-->
-        <!--            type="text"-->
-        <!--            @click="go()"-->
-        <!--        >操作按钮</el-button>-->
+        <div style="flex: 1">
+          <el-input v-model="input" placeholder="输入歌名" />
+        </div>
+        <div style="width: 100px">
+          <el-button
+              @click="search"
+          >搜索
+          </el-button>
+        </div>
       </div>
       <ul>
         <li v-for="(o,index) in listData" :key="index" class="box-li">
@@ -21,7 +27,10 @@
                 :fit="'fill'"></el-image>
           </div>
           <div style="flex: 1;text-align: left;">
-            {{ o.name }}{{ o.al.name }}
+            <div> {{ o.name }}{{ o.al.name }}</div>
+            <el-button v-if="!o.hasOwnProperty('url')" type="text" @click="getDownloadUrl(o)">获取下载地址</el-button>
+            <!--          <a v-if="o.hasOwnProperty('url')&&o.url.length" :download="o.name" :href="o.url" target="_blank">下载</a>-->
+            <el-button type="text" v-if="o.hasOwnProperty('url')&&o.url.length" @click="download(o)">下载</el-button>
           </div>
         </li>
       </ul>
@@ -30,7 +39,7 @@
 </template>
 
 <script>
-import { apiGetList } from '@/api/api'
+import { apiDownloadUrl, apiGetList } from '@/api/api'
 
 export default {
   name: 'app',
@@ -40,24 +49,49 @@ export default {
   props: {},
   data() {
     return {
-      listData: []
+      listData: [],
+      input: undefined
+      // taglist:[
+      //   {name:'歌曲',}
+      // ]
     }
   },
   computed: {},
   watch: {},
   created() {
-    this.go()
   },
   mounted() {
   },
   destroyed() {
   },
   methods: {
-    go() {
-      apiGetList({ 'keywords': '猫咪宝贝' }).then(res => {
+    search() {
+      const query = {
+        'keywords': this.input
+      }
+      apiGetList(query).then(res => {
         this.listData = res.result.songs
       })
+    },
+    getDownloadUrl(item) {
+      apiDownloadUrl({ id: item.id }).then(res => {
+        if(!res.data.url){
+          this.$message.error('为获取的下载链接')
+          return
+        }
+        this.$set(item, 'url', res.data.url)
+      })
+    },
+    async download(item) {
+      const data = await fetch(item.url)
+      const blob = await data.blob()
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = item.name
+      a.click()
     }
+
   }
 }
 </script>
@@ -67,11 +101,18 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
-.box-li{
+
+.clearfix {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.box-li {
   display: flex;
   height: 10vh;
   margin-bottom: 1vh;
