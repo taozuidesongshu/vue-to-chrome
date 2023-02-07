@@ -1,4 +1,4 @@
-//绩效评估API
+//插件API
 import request from './request'
 /**
  * @description: 获取列表

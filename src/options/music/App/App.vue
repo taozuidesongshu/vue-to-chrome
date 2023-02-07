@@ -20,7 +20,7 @@
       </div>
       <ul v-loading="loading">
         <li v-for="(o,index) in listData" :key="index" class="box-li">
-          <div style="width: 10vw">
+          <div style="width: 10vw; height: 10vh">
             <el-image
                 style="width: 100px; height: 100px"
                 :src="o.al.picUrl"
@@ -28,8 +28,8 @@
           </div>
           <div style="flex: 1;text-align: left;">
             <div> {{ o.name }}{{ o.al.name }}</div>
+            <div>{{o.alia.join(',')}}</div>
             <el-button v-if="!o.hasOwnProperty('url')" type="text" @click="getDownloadUrl(o)">获取下载地址</el-button>
-            <!--          <a v-if="o.hasOwnProperty('url')&&o.url.length" :download="o.name" :href="o.url" target="_blank">下载</a>-->
             <el-button type="text" v-if="o.hasOwnProperty('url')&&o.url.length" @click="download(o)">下载</el-button>
           </div>
         </li>
@@ -99,7 +99,7 @@ export default {
       const url = window.URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.href = url
-      a.download = item.name
+      a.download = item.name+item.al.name
       a.click()
     }
 
@@ -127,6 +127,6 @@ export default {
   display: flex;
   height: 10vh;
   margin-bottom: 1vh;
-  width: 100vw;
+  width: max-content;
 }
 </style>

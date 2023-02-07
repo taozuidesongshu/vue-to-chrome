@@ -51,7 +51,8 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
 	pages: {
 		"popup":{ entry: `src/popup/index.js`, template: 'src/popup/index.html', filename: `html/popup.html` },
-		"music":{ entry: `src/options/music/index.js`, template: 'src/options/juejin/index.html', filename: `html/music.html` },
+		"music":{ entry: `src/options/music/index.js`, template: 'src/options/music/index.html', filename: `html/music.html` },
+		"OT":{ entry: `src/options/OT/index.js`, template: 'src/options/OT/index.html', filename: `html/OT.html` },
 	},
 	// // 生产环境是否生成 sourceMap 文件
 	productionSourceMap: false,

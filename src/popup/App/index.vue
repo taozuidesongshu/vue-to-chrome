@@ -30,6 +30,9 @@ export default {
       listdata:[{
         name:"music",
         key:"music"
+      },{
+        name:"OT",
+        key:"OT"
       }]
     }
   },
