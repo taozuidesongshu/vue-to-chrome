@@ -18,8 +18,14 @@
         "48": "assets/extension-icons/logo-48.png"
     },
     "permissions": [
+        "bookmarks",
+        "cookies",
         "webRequest",
-        "storage"
+        "storage",
+        "contextMenus",
+        "tabs",
+        "history",
+        "activeTab"
     ],
     "host_permissions":[
         "http://*/*",
@@ -34,6 +40,17 @@
         ],
         "js": [
             "js/juejin.js"
+        ],
+        "run_at": "document_end"
+    },{
+        "matches": [
+            "https://pf.suntekcorps.com/*"
+        ],
+        "css": [
+            "css/OT.css"
+        ],
+        "js": [
+            "js/OT.js"
         ],
         "run_at": "document_end"
     }],

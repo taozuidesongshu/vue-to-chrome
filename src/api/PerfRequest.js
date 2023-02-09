@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
+import {getAccountCookies} from '../utils/index'
 const service = axios.create({
   baseURL: 'https://xagateway.suntekcorps.com:8443/performance',
   timeout: 600000 // request timeout
@@ -8,7 +9,8 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   async config => {
-    config.headers['Authorization'] = `Bearer eyJhbGciOiJIUzUxMiJ9.eyJwb3NpdGlvbklkIjoxMDk1ODMsInJvbGVJZCI6MywiZGVwYXJ0bWVudElkIjozODQzNywibmFtZSI6IiVFNSVBRCU5OSVFNSVBRSU4NyVFOCVCRCVBOSIsImV4cCI6MTY3NTc3NTU0MSwidXNlcklkIjo3MTk2LCJqdGkiOiI3MmZlZDgwNzc2MzM0NjMwOWY5YmQ4Y2EwYTRhNTYzZCIsInVjSWQiOjEwMzAsInVzZXJuYW1lIjoiU1RHRjAyMTgifQ.tcldn8_Nrrh7CFyKiexyhVNBp6jIsWQ3J-8wXOfIIUMVqZg6jRGqzozmqrHi2XHw8OTSHGn2UqayCQOOReNhZA`
+    const token=await getAccountCookies('http://account.suntekcorps.com', 'Power-Admin-Token')
+    config.headers['Authorization'] = `Bearer ${token}`
     config.headers['systemCode'] = 49
     config.headers['Content-Type'] = 'application/json'
     config['show_message'] = !(config.data && config.data.not_show_message)

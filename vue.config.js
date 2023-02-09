@@ -52,7 +52,7 @@ module.exports = {
 	pages: {
 		"popup":{ entry: `src/popup/index.js`, template: 'src/popup/index.html', filename: `html/popup.html` },
 		"music":{ entry: `src/options/music/index.js`, template: 'src/options/music/index.html', filename: `html/music.html` },
-		"OT":{ entry: `src/options/OT/index.js`, template: 'src/options/OT/index.html', filename: `html/OT.html` },
+		// "OT":{ entry: `src/options/OT/index.js`, template: 'src/options/OT/index.html', filename: `html/OT.html` },
 	},
 	// // 生产环境是否生成 sourceMap 文件
 	productionSourceMap: false,
@@ -61,6 +61,7 @@ module.exports = {
 		devtool: 'inline-source-map', // 不启用sourceMap
 		entry: {
 			'juejin': path.resolve('src', 'content/juejin/index.js'),
+			'OT': path.resolve('src', 'content/OT/index.js'),
 			'background': path.resolve('src', 'background/background.js')
 		},
 		output: {

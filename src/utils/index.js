@@ -1,4 +1,4 @@
-export default function injectUrl(path) {
+export function injectUrl(path) {
     if (!path) {
         throw new Error('not path')
     }
@@ -21,4 +21,13 @@ export default function injectUrl(path) {
         link.rel = "stylesheet"
         document.head.appendChild(link)
     }
+}
+
+export function getAccountCookies(url, name) {
+    return new Promise((resolve, reject) => {
+        // 发送信息
+        chrome.runtime.sendMessage({ type: 'Cookie', url, name }).then((request, sender, sendResponse) => {
+            resolve(request)
+        })
+    })
 }
