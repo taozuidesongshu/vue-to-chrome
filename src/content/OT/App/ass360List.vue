@@ -125,7 +125,7 @@
 </template>
 <script>
 
-import { apiResultViewFlowContent, apiPersonalPeriodList } from '@/api/performance'
+import { apiResultViewFlowContent, apiPersonalPeriodList ,apiDepartmentUser} from '@/api/performance'
 
 export default {
   name: 'Ass360List',

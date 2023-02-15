@@ -30,7 +30,8 @@
             <div> {{ o.name }}{{ o.al.name }}</div>
             <div>{{o.alia.join(',')}}</div>
             <el-button v-if="!o.hasOwnProperty('url')" type="text" @click="getDownloadUrl(o)">获取下载地址</el-button>
-            <el-button type="text" v-if="o.hasOwnProperty('url')&&o.url.length" @click="download(o)">下载</el-button>
+            <el-button type="text" v-if="o.hasOwnProperty('url')&&o.url.length" @click="download(o)">中转下载</el-button>
+            <a v-if="o.hasOwnProperty('url')&&o.url.length" :download="o.name" :href="o.url" target="_blank">源连接下载</a>
           </div>
         </li>
       </ul>
