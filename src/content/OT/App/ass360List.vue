@@ -121,6 +121,14 @@
       <el-table-column prop="evaluate_user_department" label="部门" align="center" min-width="110" />
       <el-table-column prop="evaluate_user_position" label="职位" align="center" min-width="94" />
     </el-table>
+
+    <el-form ref="editData" :inline="false" :model="flow8Data" style="position: relative" label-position="left" size="mini" @submit.native.prevent>
+      <div class="info-title-conte-v2">
+        <div class="info-title-conte-title-v2">最终绩效成绩</div>
+        <div class="info-title-conte-box-v2">分数：{{ flow8Data.score || '-' }}</div>
+        <div class="info-title-conte-box-v2">等级：{{ flow8Data.code || '-' }}</div>
+      </div>
+    </el-form>
   </div>
 </template>
 <script>
@@ -153,17 +161,18 @@ export default {
         period_id: undefined,
         be_evaluate_user_id: 7196
       },
-      period_options: [],
-      user_options: [],
-      options: []
+      period_options: [], //周期列表
+      user_options: [], //用户列表
+      options: [],  //搜索的用户列表
+      flow8Data: [] //结果查看
     }
   },
   created() {
     this.getSelectList()
   },
   methods: {
-    //获取展示数据
-    async getInfo() {
+    //获取他人给我评估
+    async getflow4() {
       this.loading = true
       try {
         const query = {
@@ -198,6 +207,26 @@ export default {
         this.loading = false
       }
     },
+
+    //获取最终绩效
+    async getflow8() {
+      // this.flow8loading = true
+      try {
+        const query = {
+          period_id: this.listQuery.period_id,
+          flow_id: [8], //只看流程4 他人给我评估
+          type: 2, //1 获取参考内容 2 获取填写内容
+          be_evaluate_user_id: this.listQuery.be_evaluate_user_id
+        }
+        const { data = {} } = (await apiResultViewFlowContent(query))//展示数据
+        //处理数据
+        this.flow8Data = data
+      } catch (e) {
+        console.log(e)
+      } finally {
+        // this.flow8loading = false
+      }
+    },
     //获取用户，组织架构
     async get_options(period_id) {
       const { user, department } = (await apiDepartmentUser({ period_id })).data //获取所有组织架构、所有用户
@@ -205,11 +234,6 @@ export default {
     },
     close(e) {
       e.currentTarget.parentNode.remove()
-    },
-    tableRowClassName({ row, rowIndex }) {
-      if (row.flow_id === 3) {
-        return 'info-row'
-      }
     },
     getHref(content) {
       if (!content || typeof (content) !== 'string') {
@@ -266,13 +290,15 @@ export default {
     //搜索
     handleFilter() {
       this.listQuery.page = 1
-      this.getInfo()
+      this.getflow8()
+      this.getflow4()
 
     },
     //清空
     clearSearch() {
       this.$refs['listQuery'].resetFields()
-      this.getInfo()
+      this.getflow4()
+      this.flow8Data={}
     },
     //筛选搜索的用户
     remoteMethod(query) {
