@@ -65,7 +65,9 @@ module.exports = {
 			'background': path.resolve('src', 'background/background.js')
 		},
 		output: {
-			filename: 'js/[name].js'
+			filename: 'js/[name].js',
+			//webpack5 版本中，自动清除上一次打包的结果
+			clean: true
 		},
 		plugins: plugins
 	},
