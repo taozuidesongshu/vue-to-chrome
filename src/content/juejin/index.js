@@ -31,12 +31,16 @@ import AppComponent from "./App/app.vue";
 import {
     Card,
     Button,
-    Image
-} from 'element-ui';
+    Image,
+    Tabs,
+    TabPane
+} from 'element-ui'
 
 Vue.use(Card);
 Vue.use(Button);
 Vue.use(Image);
+Vue.use(Tabs);
+Vue.use(TabPane);
 new Vue({
     el: div,
     render: createElement => createElement(AppComponent)

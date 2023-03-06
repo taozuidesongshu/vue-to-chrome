@@ -62,12 +62,12 @@ module.exports = {
 		entry: {
 			'juejin': path.resolve('src', 'content/juejin/index.js'),
 			'OT': path.resolve('src', 'content/OT/index.js'),
-			'background': path.resolve('src', 'background/background.js')
+			'background': path.resolve('src', 'background/background.ts')
 		},
 		output: {
 			filename: 'js/[name].js',
 			//webpack5 版本中，自动清除上一次打包的结果
-			clean: true
+			// clean: true
 		},
 		plugins: plugins
 	},
